@@ -36,6 +36,7 @@ class MainPage extends Component<{}, MainPageState> {
           onSearchTermChange={this.handleSearchTermChange}
           onSearch={this.handleSearch}
           onThrowError={this.handleThrowError}
+          loading={false}
         />
         <PokemonSlider limit={12} searchTerm={searchTerm} />
       </ErrorBoundary>

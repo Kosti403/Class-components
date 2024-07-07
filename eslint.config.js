@@ -18,7 +18,13 @@ export default {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'react', 'react-compiler', 'prettier'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'react-compiler',
+    'prettier',
+    'eslint-plugin-react-compiler',
+  ],
   rules: {
     '@typescript-eslint/no-explicit-any': 'error',
     'react-compiler/no-unused-components': 'error',
@@ -26,6 +32,7 @@ export default {
     'react-compiler/no-unsafe-swr-calls': 'error',
     'react-compiler/no-unused-values': 'error',
     'prettier/prettier': 'error',
+    'react-compiler/react-require': 'error',
   },
   settings: {
     react: {
