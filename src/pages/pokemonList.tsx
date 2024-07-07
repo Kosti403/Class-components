@@ -2,7 +2,7 @@ import { Component } from 'react';
 import {
   PokemonSliderProps,
   PokemonSliderState,
-  PokemonType,
+  PokemonType
 } from '../shared/types/pokemonTypes';
 import { fetchPokemonList } from '../shared/API/getPokemons';
 import s from './pokemonList.module.css';
@@ -40,6 +40,7 @@ class PokemonSlider extends Component<PokemonSliderProps, PokemonSliderState> {
     const { limit } = this.props;
 
     const totalPages = Math.ceil(totalPokemon / limit);
+console.log(pokemonList);
 
     return (
       <>
@@ -51,12 +52,7 @@ class PokemonSlider extends Component<PokemonSliderProps, PokemonSliderState> {
                 <h2>{pokemon.name}</h2>
                 <p>ID: {pokemon.id}</p>
                 <div className="pokemon-image">
-                  {pokemon.sprites.front_default && (
-                    <img
-                      src={pokemon.sprites.front_default}
-                      alt="Pokemon sprite"
-                    />
-                  )}
+                  <img src={pokemon.sprites?.front_default} alt="Pokemon sprite"/>
                 </div>
                 <p>Base Experience: {pokemon.base_experience}</p>
                 <p>Height: {pokemon.height}</p>

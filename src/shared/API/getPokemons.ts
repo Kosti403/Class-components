@@ -23,6 +23,7 @@ export const fetchPokemonList = async (
         is_default: pokemon.data.is_default,
         order: pokemon.data.order,
         weight: pokemon.data.weight,
+        sprites: pokemon.data.sprites || { front_default: '' },
       };
     }),
   );
