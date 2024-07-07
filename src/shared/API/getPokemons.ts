@@ -1,16 +1,14 @@
-import PokeApi from './baseUrl';
 import { PokemonType } from '../types/pokemonTypes';
+import PokeApi from './baseUrl';
+
 
 export const fetchPokemonList = async (
   limit: number,
   offset: number,
+  searchTerm: string
 ): Promise<PokemonType[]> => {
-  const response = await PokeApi.get(
-    `/pokemon?limit=${limit}&offset=${offset}`,
-  );
-  const pokemonUrls = response.data.results.map(
-    (pokemon: { url: string }) => pokemon.url,
-  );
+  const response = await PokeApi.get(`/pokemon?limit=${limit}&offset=${offset}`);
+  const pokemonUrls = response.data.results.map((pokemon: { url: string }) => pokemon.url);
 
   const pokemonData = await Promise.all(
     pokemonUrls.map(async (url: string) => {
@@ -25,8 +23,14 @@ export const fetchPokemonList = async (
         weight: pokemon.data.weight,
         sprites: pokemon.data.sprites || { front_default: '' },
       };
-    }),
+    })
   );
+
+  if (searchTerm) {
+    return pokemonData.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
 
   return pokemonData;
 };

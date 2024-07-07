@@ -13,6 +13,7 @@ export interface PokemonType {
 
 export interface PokemonSliderProps {
   limit: number;
+  searchTerm: string;
 }
 
 export interface PokemonSliderState {
