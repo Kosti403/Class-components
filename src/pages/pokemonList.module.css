@@ -1,0 +1,26 @@
+.PokemonSlider {
+  padding: 20px;
+}
+
+.slides {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.slide {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: calc(25% - 40px);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
