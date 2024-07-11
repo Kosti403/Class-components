@@ -7,10 +7,11 @@ interface MainPageState {
   searchTerm: string;
 }
 
-class MainPage extends Component<{}, MainPageState> {
+class MainPage extends Component<Record<string, never>, MainPageState> {
   state: MainPageState = {
     searchTerm: localStorage.getItem('searchTerm') || '',
-  };
+
+};
 
   handleSearchTermChange = (term: string) => {
     this.setState({ searchTerm: term });
