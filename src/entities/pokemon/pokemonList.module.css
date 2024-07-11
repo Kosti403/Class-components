@@ -1,0 +1,49 @@
+.pokemonSlider {
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.slides {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.slide {
+  border: 1px solid #ccc;
+  padding: 30px;
+  margin: 10px;
+  width: calc(25% - 40px);
+  background-image: url('../../assets/frameCard.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #100c0c;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pokemonImage {
+  margin-bottom: 20px;
+}
+.pokemonImage img {
+  padding-bottom: 20px;
+  height: 155px;
+}
+
+.infoPokemon {
+  padding-bottom: 61px;
+}
