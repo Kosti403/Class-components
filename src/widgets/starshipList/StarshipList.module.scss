@@ -1,0 +1,13 @@
+.starshipList {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+
+  .starshipList {
+    border: 1px solid;
+    border-color: #646cff;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+}
