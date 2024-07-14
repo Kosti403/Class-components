@@ -1,5 +1,10 @@
-
 export interface Starship {
+  name: string;
+  model: string;
+
+}
+
+export interface StarshipDetail {
   name: string;
   model: string;
   manufacturer: string;
@@ -20,9 +25,9 @@ export interface Starship {
   url: string;
 }
 
-export interface StarshipResponse {
+export interface StarshipsResponse {
   count: number;
-  next: string | null;
-  previous: string | null;
+  next?: string | null;
+  previous?: string | null;
   results: Starship[];
 }

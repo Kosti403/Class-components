@@ -1,53 +1,34 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import s from './filmPage.module.scss';
-import { Starship } from '../shared/types/StarshipType';
-import { getStarshipsByPage } from '../shared/api/starship';
+import React, { useState } from "react";
+import useStarships from "../shared/HOC/useStarships";
+import StarshipList from "../widgets/starshipList/starshipList";
+import Pagination from "../features/pagination/pagination";
 
-const StarshipPage = () => {
-  const { page }: { page: string } = useParams();
-  const [starships, setStarships] = useState<Starship[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  
-  useEffect(() => {
-    const fetchStarships = async () => {
-      try {
-        setLoading(true);
-        const response = await getStarshipsByPage(parseInt(page));
-        setStarships(response.results);
-      } catch (error) {
-        console.error('Failed to fetch starships:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+const StarshipPage: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const { starships, totalPages } = useStarships(currentPage);
 
-    fetchStarships();
-  }, [page]);
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
-    <div className='container'>
+    <div className="container">
       <h1>Starships</h1>
-      <div className={s.starshipList}>
-        {starships.map((starship) => (
-          <div key={starship.name} className={s.starshipCard}>
-            <h2>{starship.name}</h2>
-            <p>Model: {starship.model}</p>
-          </div>
-        ))}
-      </div>
-      <div className={s.pagination}>
-        {page && parseInt(page) > 1 && (
-          <Link to={`/starships/${parseInt(page) - 1}`}>Previous</Link>
-        )}
-        {starships.length === 10 && (
-          <Link to={`/starships/${parseInt(page) + 1}`}>Next</Link>
-        )}
-      </div>
+      <StarshipList starships={starships} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onNext={handleNext}
+        onPrev={handlePrev}
+      />
     </div>
   );
 };

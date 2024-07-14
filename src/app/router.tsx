@@ -1,16 +1,16 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import StarshipPage from '../pages/StarshipPage';
+// App.tsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import StarshipPage from "../pages/StarshipPage";
+import NotFoundPage from "../widgets/ERORR/NotFoundPage";
 
-
-const AppRoutes: React.FC = () => {
+export const App: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<StarshipPage />} />
-      <Route path="/starships" element={<StarshipPage />} />
-      <Route path="/starships/:page" element={<StarshipPage />} />
-    </Routes>
+    <Router>
+      <Routes>
+        <Route path="/" element={<StarshipPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Router>
   );
 };
-
-export default AppRoutes;

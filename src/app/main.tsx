@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./global.css";
+import "./global.scss";
 import StarshipPage from "../pages/StarshipPage.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
